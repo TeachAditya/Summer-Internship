@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlavorShare - Explore Recipes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+        /* Top Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 6%;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eaeaea;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #0d7a70;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #555555;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 15px;
+            transition: all 0.2s ease;
+        }
+        .nav-links a.active, .nav-links a:hover {
+            background-color: #0d7a70;
+            color: #ffffff;
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .search-container input {
+            padding: 6px 12px;
+            border: 1px solid #cccccc;
+            border-radius: 20px;
+            font-size: 12px;
+            background-color: #f7f7f7;
+            outline: none;
+            width: 160px;
+        }
+        .login-btn {
+            text-decoration: none;
+            color: #333333;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .signup-btn {
+            text-decoration: none;
+            background-color: #ff7a3d;
+            color: #ffffff;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* Main Explore Page Layout Framework */
+        .explore-wrapper {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            padding: 30px 6%;
+            gap: 30px;
+        }
+
+        /* Sidebar Filter Component */
+        .filter-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border-right: 1px solid #eeeeee;
+            padding-right: 15px;
+        }
+        .filter-link {
+            text-decoration: none;
+            color: #444444;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 0;
+            transition: color 0.2s;
+        }
+        .filter-link:hover, .filter-link.active {
+            color: #0d7a70;
+        }
+
+        /* Top Bar Dynamic Controls Component */
+        .explore-header-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .inner-search {
+            position: relative;
+            flex-grow: 1;
+            max-width: 350px;
+        }
+        .inner-search input {
+            width: 100%;
+            padding: 8px 12px 8px 32px;
+            border: 1px solid #dddddd;
+            border-radius: 4px;
+            font-size: 13px;
+            outline: none;
+            background-color: #fafafa;
+        }
+        .inner-search i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888888;
+            font-size: 12px;
+        }
+        .dropdowns-group {
+            display: flex;
+            gap: 10px;
+        }
+        .filter-dropdown {
+            padding: 6px 24px 6px 10px;
+            border: 1px solid #dddddd;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #555555;
+            background: #ffffff;
+            outline: none;
+            cursor: pointer;
+        }
+        .more-filters-btn {
+            background: none;
+            border: none;
+            font-size: 12px;
+            font-weight: 600;
+            color: #333333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Content Header Title */
+        .page-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #222222;
+            text-transform: uppercase;
+        }
+
+        /* 4-Column Recipe Grid Component */
+        .explore-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .recipe-card {
+            background: #ffffff;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+        .card-media {
+            position: relative;
+            height: 130px;
+        }
+        .card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .fav-icon {
+            position: absolute;
+            top: 8px; right: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: #888888;
+            cursor: pointer;
+        }
+        .card-body {
+            padding: 12px;
+        }
+        .card-body h3 {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333333;
+            margin-bottom: 5px;
+        }
+        .rating-stars {
+            color: #ffb703;
+            font-size: 10px;
+            margin-bottom: 8px;
+        }
+        .tag-pill {
+            display: inline-block;
+            font-size: 10px;
+            background-color: #edf6f5;
+            color: #0d7a70;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1100px) {
+            .explore-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 850px) {
+            .explore-wrapper { grid-template-columns: 1fr; }
+            .filter-sidebar { display: none; } /* Standard behavior for mobile filter panels */
+            .explore-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 500px) {
+            .explore-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-bowl-food"></i> <span>FlavorShare</span>
+        </div>
+        <nav class="nav-links">
+            <a href="main_home.html">Home</a>
+            <a href="explore.html" class="active">Explore Recipes</a>
+            <a href="categories.html">Categories</a>
+            <a href="community.html">Community</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+        </nav>
+        <div class="nav-right">
+            <div class="search-container"><input type="text" placeholder="Search Bar"></div>
+            <a href="authen.html" class="login-btn">Login</a>
+            <a href="authen.html" class="signup-btn">Sign Up</a>
+        </div>
+    </header>
+
+    <div class="explore-wrapper">
+        
+        <aside class="filter-sidebar">
+            <a href="#" class="filter-link active">All</a>
+            <a href="#" class="filter-link">Breakfast</a>
+            <a href="#" class="filter-link">Lunch</a>
+            <a href="#" class="filter-link">Categories</a>
+            <a href="#" class="filter-link">Dessert</a>
+            <a href="#" class="filter-link">Blog</a>
+        </aside>
+
+        <main>
+            <div class="explore-header-controls">
+                <div class="inner-search">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" placeholder="Search">
+                </div>
+                <div class="dropdowns-group">
+                    <select class="filter-dropdown">
+                        <option>All Filters</option>
+                    </select>
+                    <select class="filter-dropdown">
+                        <option>Fitleres...</option>
+                    </select>
+                </div>
+                <button class="more-filters-btn">
+                    <i class="fa-solid fa-sliders"></i> Filters
+                </button>
+            </div>
+
+            <h2 class="page-title">EXPLORE RECIPES</h2>
+
+            <div class="explore-grid">
+                
+                <div class="recipe-card">
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
+                        <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                    <div class="card-body">
+                        <h3>Spicy Chicken Pizza</h3>
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="tag-pill">Healthy</span>
+                    </div>
+                </div>
+
+                <div class="recipe-card">
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
+                        <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                    <div class="card-body">
+                        <h3>Vegan Tacos</h3>
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                        </div>
+                        <span class="tag-pill">Healthy</span>
+                    </div>
+                </div>
+
+                <div class="recipe-card">
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
+                        <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                    <div class="card-body">
+                        <h3>Signature Cocktail</h3>
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="tag-pill">Healthy</span>
+                    </div>
+                </div>
+
+                <div class="recipe-card">
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
+                        <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                    <div class="card-body">
+                        <h3>Lemon Tart</h3>
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                        </div>
+                        <span class="tag-pill">Healthy</span>
+                    </div>
+                </div>
+
+                <div class="recipe-card">
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
+                        <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                    <div class="card-body">
+                        <h3>Healthy Tofu & Veggie Bowl</h3>
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                        </div>
+                        <span class="tag-pill">Healthy</span>
+                    </div>
+                </div>
+
+                <div class="recipe-card">
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
+                        <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                    <div class="card-body">
+                        <h3>Garlic Steak</h3>
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="tag-pill">Healthy</span>
+                    </div>
+                </div>
+
+                <div class="recipe-card">
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
+                        <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                    <div class="card-body">
+                        <h3>Blueberry Pancakes</h3>
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                        </div>
+                        <span class="tag-pill">Healthy</span>
+                    </div>
+                </div>
+
+                <div class="recipe-card">
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
+                        <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                    <div class="card-body">
+                        <h3>Chocolate Cake</h3>
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                        </div>
+                        <span class="tag-pill">Healthy</span>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

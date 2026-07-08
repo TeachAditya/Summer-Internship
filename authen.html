@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlavorShare - Join Our Culinary Community</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px; /* Increased vertical padding */
+        }
+
+        /* Expanded Main Workspace Container */
+        .auth-container {
+            background-color: #ffffff;
+            border-radius: 16px; /* Smoother corner radius */
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+            width: 100%;
+            max-width: 1100px; /* Boosted from 900px to give maximum breathing room */
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            overflow: hidden;
+            min-height: 680px; /* Amplified container depth */
+        }
+
+        /* Left Side: Branding and Hero Graphic Panel */
+        .auth-visual-panel {
+            background: linear-gradient(rgba(13, 122, 112, 0.88), rgba(9, 84, 77, 0.95)), 
+                        url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1000&q=80') center/cover;
+            color: #ffffff;
+            padding: 60px; /* Expanded padding */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+        .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 26px; /* Larger brand element */
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            color: #ffffff;
+        }
+        .visual-welcome h2 {
+            font-size: 42px; /* Heavy bold look */
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 20px;
+        }
+        .visual-welcome p {
+            font-size: 16px; /* Easy readability size */
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Right Side: Interactive Form Module */
+        .auth-form-panel {
+            padding: 60px 50px; /* More padding so inputs don't feel crammed */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        /* Form Heading Element */
+        .form-header {
+            margin-bottom: 35px;
+        }
+        .form-header h2 {
+            font-size: 30px; /* Prominent form titles */
+            color: #222222;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .form-header p {
+            font-size: 15px;
+            color: #666666;
+        }
+        .form-header span {
+            color: #ff7a3d;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        /* Input Controls Layout Matrix */
+        .form-group {
+            margin-bottom: 24px; /* Increased separation */
+            position: relative;
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px; /* Larger labels */
+            font-weight: 600;
+            color: #444444;
+            margin-bottom: 10px;
+        }
+        .input-wrapper {
+            position: relative;
+        }
+        .input-wrapper i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888888;
+            font-size: 16px;
+        }
+        .input-wrapper input {
+            width: 100%;
+            padding: 14px 16px 14px 48px; /* Taller inputs for easier tap targets */
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            font-size: 15px; /* Clean text sizes */
+            outline: none;
+            background-color: #fcfdfd;
+            transition: all 0.2s;
+        }
+        .input-wrapper input:focus {
+            border-color: #0d7a70;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(13, 122, 112, 0.1);
+        }
+
+        /* Auxiliary Utilities (Remember Me / Forgot Pwd) */
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #555555;
+            cursor: pointer;
+        }
+        .remember-me input {
+            width: 16px;
+            height: 16px;
+        }
+        .forgot-pass {
+            color: #0d7a70;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .forgot-pass:hover {
+            text-decoration: underline;
+        }
+
+        /* Call-To-Action Execution Buttons */
+        .submit-btn {
+            width: 100%;
+            background-color: #ff7a3d;
+            color: #ffffff;
+            border: none;
+            padding: 16px; /* Big, easy-to-click button framework */
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        .submit-btn:hover {
+            background-color: #e2632b;
+        }
+        .submit-btn:active {
+            transform: scale(0.99);
+        }
+
+        /* Toggle Functional Hidden Framework */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Responsive Configuration Grid Overrides */
+        @media (max-width: 850px) {
+            .auth-container { grid-template-columns: 1fr; min-height: auto; }
+            .auth-visual-panel { display: none; } 
+            .auth-form-panel { padding: 50px 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="auth-container">
+        
+        <!-- Left Narrative Visual Panel -->
+        <div class="auth-visual-panel">
+            <a href="" class="brand-header">
+                <i class="fa-solid fa-bowl-food"></i> <span>FlavorShare</span>
+            </a>
+            <div class="visual-welcome">
+                <h2>Discover,<br>Cook & Share.</h2>
+                <p>Join thousands of home chefs expanding their culinary boundaries daily. Lock in recipes, create personalized meal calendars, and track dynamic kitchen stats.</p>
+            </div>
+            <div style="font-size: 12px; opacity: 0.6;">&copy; 2026 FlavorShare Platform. All rights reserved.</div>
+        </div>
+
+        <!-- Right Form Container Panel -->
+        <div class="auth-form-panel">
+            
+            <!-- MODULE 1: LOGIN MODE -->
+            <div id="login-module">
+                <div class="form-header">
+                    <h2>Welcome Back</h2>
+                    <p>Don't have a profile yet? <span id="to-signup">Sign Up</span></p>
+                </div>
+                
+                <form onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <label for="login-email">Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="login-email" placeholder="chef@flavorshare.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="login-password" placeholder="••••••••" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox"> Remember me
+                        </label>
+                        <a href="main_home.html" class="forgot-pass">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="submit-btn" >Login to Kitchen</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

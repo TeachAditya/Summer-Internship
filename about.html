@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlavorShare - About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+        /* Top Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 6%;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eaeaea;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #0d7a70;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #555555;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 15px;
+            transition: all 0.2s ease;
+        }
+        .nav-links a.active, .nav-links a:hover {
+            background-color: #0d7a70;
+            color: #ffffff;
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .search-container input {
+            padding: 6px 12px;
+            border: 1px solid #cccccc;
+            border-radius: 20px;
+            font-size: 12px;
+            background-color: #f7f7f7;
+            outline: none;
+            width: 160px;
+        }
+        .login-btn {
+            text-decoration: none;
+            color: #333333;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .signup-btn {
+            text-decoration: none;
+            background-color: #ff7a3d;
+            color: #ffffff;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* About Header Section */
+        .about-hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1600&q=80') center/cover;
+            padding: 50px 6%;
+            color: #ffffff;
+            text-align: center;
+        }
+        .about-hero h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Workspace Grid Layout Panels */
+        .content-container {
+            padding: 50px 6%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Two Column Content Row Split */
+        .about-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        .about-row.reverse {
+            grid-template-columns: 1fr 1fr;
+        }
+        .text-panel h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #222222;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .text-panel p {
+            font-size: 13px;
+            color: #555555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .img-panel img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        /* Horizontal Split Graphic Banner Component */
+        .cta-banner {
+            background: linear-gradient(rgba(13, 122, 112, 0.85), rgba(13, 122, 112, 0.9)), url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1000&q=80') center/cover;
+            color: #ffffff;
+            padding: 50px 6%;
+            text-align: center;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+        .cta-banner h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .cta-banner p {
+            font-size: 13px;
+            max-width: 600px;
+            margin: 0 auto 20px;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+        .cta-btn {
+            display: inline-block;
+            text-decoration: none;
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            padding: 8px 24px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+        .cta-btn:hover {
+            background-color: #ffffff;
+            color: #0d7a70;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .about-row, .about-row.reverse { grid-template-columns: 1fr; gap: 30px; }
+            .about-row.reverse .img-panel { order: -1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-bowl-food"></i> <span>FlavorShare</span>
+        </div>
+        <nav class="nav-links">
+            <a href="main_home.html">Home</a>
+            <a href="explore.html">Explore Recipes</a>
+            <a href="categories.html">Categories</a>
+            <a href="community.html">Community</a>
+            <a href="about.html" class="active">About</a>
+            <a href="services.html">Services</a>
+        </nav>
+        <div class="nav-right">
+            <div class="search-container"><input type="text" placeholder="Search Bar"></div>
+            <a href="authen.html" class="login-btn">Login</a>
+            <a href="authen.html" class="signup-btn">Sign Up</a>
+        </div>
+    </header>
+
+    <!-- About Dynamic Hero Segment -->
+    <section class="about-hero">
+        <h1>About Us</h1>
+    </section>
+
+    <!-- Main Content Workspace Container -->
+    <main class="content-container">
+
+        <!-- Split Dynamic Section Row 1 (Our Story) -->
+        <div class="about-row">
+            <div class="text-panel">
+                <h2>Our Story</h2>
+                <p>From our kitchen to yours, welcome to our growing family! We started as a simple idea to share cherished recipes, which blossomed into a vibrant network. Here, culinary enthusiasts from all backgrounds comes together to document, share, and discover.</p>
+                <p>Our mission is to celebrate the diversity of home cooking and connect peoples through the common language of food.</p>
+            </div>
+            <div class="img-panel">
+                <img src="https://plus.unsplash.com/premium_photo-1681998566758-87acec86e3c4?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Team collaborating">
+            </div>
+        </div>
+
+        <!-- Split Dynamic Section Row 2 (Passion For Food) -->
+        <div class="about-row reverse">
+            <div class="img-panel">
+                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" alt="Cooking team">
+            </div>
+            <div class="text-panel">
+                <h2>Passion for Food</h2>
+                <p> More than just a database, this is a living archive of shared meals and moments. Food is culture, tradition, and a way to share your care. Whether food-based discovery, every recipe here has a story.</p>
+                <p>Whether it's your grandmother's secret recipe or a quick weeknight dinner, share your passion, find inspiration, and cook something amazing with us.</p>
+            </div>
+        </div>
+
+        <!-- Empowering Home Cooks Embedded Graphic Callout Box Banner -->
+        <section class="cta-banner">
+            <h2>Empowering Home Cooks</h2>
+            <p>We are on a mission to give you the tools, inspiration and community support needed to master any dish with confidence. From beginner kitchen basics to advanced culinary techniques, we believe everyone has the potential to create something extraordinary.</p>
+            <a href="#" class="cta-btn">Join Our Community</a>
+        </section>
+
+    </main>
+
+</body>
+</html>
