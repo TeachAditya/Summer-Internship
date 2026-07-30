@@ -5,240 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlavorShare - Explore Recipes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Global Reset & Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            background-color: #ffffff;
-            color: #333333;
-        }
-
-        /* Top Navigation Bar */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 6%;
-            background-color: #ffffff;
-            border-bottom: 1px solid #eaeaea;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 20px;
-            font-weight: 700;
-            color: #0d7a70;
-        }
-        .nav-links {
-            display: flex;
-            gap: 15px;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: #555555;
-            font-size: 13px;
-            font-weight: 600;
-            padding: 6px 10px;
-            border-radius: 15px;
-            transition: all 0.2s ease;
-        }
-        .nav-links a.active, .nav-links a:hover {
-            background-color: #0d7a70;
-            color: #ffffff;
-        }
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .search-container input {
-            padding: 6px 12px;
-            border: 1px solid #cccccc;
-            border-radius: 20px;
-            font-size: 12px;
-            background-color: #f7f7f7;
-            outline: none;
-            width: 160px;
-        }
-        .login-btn {
-            text-decoration: none;
-            color: #333333;
-            font-size: 13px;
-            font-weight: 600;
-        }
-        .signup-btn {
-            text-decoration: none;
-            background-color: #ff7a3d;
-            color: #ffffff;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        /* Main Explore Page Layout Framework */
-        .explore-wrapper {
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            padding: 30px 6%;
-            gap: 30px;
-        }
-
-        /* Sidebar Filter Component */
-        .filter-sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            border-right: 1px solid #eeeeee;
-            padding-right: 15px;
-        }
-        .filter-link {
-            text-decoration: none;
-            color: #444444;
-            font-size: 13px;
-            font-weight: 600;
-            padding: 4px 0;
-            transition: color 0.2s;
-        }
-        .filter-link:hover, .filter-link.active {
-            color: #0d7a70;
-        }
-
-        /* Top Bar Dynamic Controls Component */
-        .explore-header-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .inner-search {
-            position: relative;
-            flex-grow: 1;
-            max-width: 350px;
-        }
-        .inner-search input {
-            width: 100%;
-            padding: 8px 12px 8px 32px;
-            border: 1px solid #dddddd;
-            border-radius: 4px;
-            font-size: 13px;
-            outline: none;
-            background-color: #fafafa;
-        }
-        .inner-search i {
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #888888;
-            font-size: 12px;
-        }
-        .dropdowns-group {
-            display: flex;
-            gap: 10px;
-        }
-        .filter-dropdown {
-            padding: 6px 24px 6px 10px;
-            border: 1px solid #dddddd;
-            border-radius: 4px;
-            font-size: 12px;
-            color: #555555;
-            background: #ffffff;
-            outline: none;
-            cursor: pointer;
-        }
-        .more-filters-btn {
-            background: none;
-            border: none;
-            font-size: 12px;
-            font-weight: 600;
-            color: #333333;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        /* Content Header Title */
-        .page-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #222222;
-            text-transform: uppercase;
-        }
-
-        /* 4-Column Recipe Grid Component */
-        .explore-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-        .recipe-card {
-            background: #ffffff;
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-        }
-        .card-media {
-            position: relative;
-            height: 130px;
-        }
-        .card-media img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .fav-icon {
-            position: absolute;
-            top: 8px; right: 8px;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            color: #888888;
-            cursor: pointer;
-        }
-        .card-body {
-            padding: 12px;
-        }
-        .card-body h3 {
-            font-size: 13px;
-            font-weight: 600;
-            color: #333333;
-            margin-bottom: 5px;
-        }
-        .rating-stars {
-            color: #ffb703;
-            font-size: 10px;
-            margin-bottom: 8px;
-        }
-        .tag-pill {
-            display: inline-block;
-            font-size: 10px;
-            background-color: #edf6f5;
-            color: #0d7a70;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-weight: 600;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -255,7 +22,6 @@
             <a href="services.html">Services</a>
         </nav>
         <div class="nav-right">
-            <div class="search-container"><input type="text" placeholder="Search Bar"></div>
             <a href="authen.html" class="login-btn">Login</a>
             <a href="authen.html" class="signup-btn">Sign Up</a>
         </div>
@@ -291,59 +57,76 @@
                 </button>
             </div>
 
-            <h2 class="page-title">EXPLORE RECIPES</h2>
+            <div class="view-toggle">
+                <button type="button" class="view-toggle-btn active" id="browse-btn" onclick="showExploreView()">
+                    <i class="fa-solid fa-compass"></i> Browse Recipes
+                </button>
+                <button type="button" class="view-toggle-btn" id="share-btn" onclick="showShareView()">
+                    <i class="fa-solid fa-plus"></i> Share Recipe
+                </button>
+            </div>
 
-            <div class="explore-grid">
-                
-                <div class="recipe-card">
-                    <div class="card-media">
-                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
-                        <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
+            <section id="explore-view">
+                <h2 class="page-title">EXPLORE RECIPES</h2>
+
+                <div class="add-recipe-banner">
+                    <div>
+                        <h3>Share your own recipe</h3>
+                        <p>Add a new recipe and help the community discover your favorite dish.</p>
                     </div>
-                    <div class="card-body">
-                        <h3>Spicy Chicken Pizza</h3>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <span class="tag-pill">Healthy</span>
-                    </div>
+                    <button type="button" class="add-recipe-btn" onclick="showShareView()">Share Your Recipe</button>
                 </div>
 
-                <div class="recipe-card">
-                    <div class="card-media">
-                        <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
-                        <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="card-body">
-                        <h3>Vegan Tacos</h3>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                <div class="explore-grid" id="recipe-grid">
+                    <div class="recipe-card">
+                        <div class="card-media">
+                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
+                            <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
                         </div>
-                        <span class="tag-pill">Healthy</span>
-                    </div>
-                </div>
-
-                <div class="recipe-card">
-                    <div class="card-media">
-                        <img src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
-                        <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="card-body">
-                        <h3>Signature Cocktail</h3>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <div class="card-body">
+                            <h3>Spicy Chicken Pizza</h3>
+                            <div class="rating-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="tag-pill">Healthy</span>
                         </div>
-                        <span class="tag-pill">Healthy</span>
                     </div>
-                </div>
 
-                <div class="recipe-card">
-                    <div class="card-media">
-                        <img src="https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
-                        <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
+                    <div class="recipe-card">
+                        <div class="card-media">
+                            <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
+                            <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <h3>Vegan Tacos</h3>
+                            <div class="rating-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                            </div>
+                            <span class="tag-pill">Healthy</span>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h3>Lemon Tart</h3>
+
+                    <div class="recipe-card">
+                        <div class="card-media">
+                            <img src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
+                            <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <h3>Signature Cocktail</h3>
+                            <div class="rating-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="tag-pill">Healthy</span>
+                        </div>
+                    </div>
+
+                    <div class="recipe-card">
+                        <div class="card-media">
+                            <img src="https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
+                            <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <h3>Lemon Tart</h3>
                         <div class="rating-stars">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
                         </div>
@@ -407,8 +190,172 @@
                     </div>
                 </div>
 
-            </div>
+                </div>
+            </section>
+
+            <section id="share-view" style="display: none;">
+                <div class="share-header">
+                    <button type="button" class="back-link-btn" onclick="showExploreView()">
+                        <i class="fa-solid fa-arrow-left"></i> Back to Explore Recipes
+                    </button>
+                    <h2 class="share-page-title">Share Your Culinary Creation</h2>
+                    <p class="share-page-subtitle">Upload your recipe details, ingredients, and steps to inspire the community.</p>
+                </div>
+
+                <form class="recipe-form-card" id="recipe-form">
+                    <div class="form-section">
+                        <div class="section-title"><i class="fa-solid fa-utensils"></i> Basic Recipe Details</div>
+                        <div class="form-group">
+                            <label for="recipe-title">Recipe Title *</label>
+                            <input type="text" id="recipe-title" placeholder="e.g. Creamy Garlic Pasta" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipe-desc">Short Description *</label>
+                            <textarea id="recipe-desc" rows="3" placeholder="Describe what makes this dish special..."></textarea>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label for="recipe-category">Category *</label>
+                                <select id="recipe-category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="breakfast">Breakfast</option>
+                                    <option value="lunch">Lunch</option>
+                                    <option value="dessert">Dessert</option>
+                                    <option value="dinner">Dinner</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="cook-time">Cook Time</label>
+                                <input type="text" id="cook-time" placeholder="30 minutes">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="section-title"><i class="fa-solid fa-list-check"></i> Ingredients</div>
+                        <div class="form-group">
+                            <label for="ingredients">Ingredients *</label>
+                            <textarea id="ingredients" rows="4" placeholder="List ingredients, one per line"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="section-title"><i class="fa-solid fa-pen-fancy"></i> Instructions</div>
+                        <div class="form-group">
+                            <label for="steps">Step-by-Step Instructions *</label>
+                            <textarea id="steps" rows="5" placeholder="Write the cooking steps clearly..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="section-title"><i class="fa-solid fa-camera"></i> Photo Upload</div>
+                        <div class="form-group">
+                            <label for="recipe-photo">Upload Recipe Photo</label>
+                            <input type="file" id="recipe-photo">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="showExploreView()">Cancel</button>
+                        <button type="submit" class="btn-primary">Publish Recipe</button>
+                    </div>
+                </form>
+            </section>
         </main>
     </div>
+
+    <script>
+        async function loadRecipes() {
+            try {
+                const response = await fetch('/api/recipes');
+                const recipes = await response.json();
+                const grid = document.getElementById('recipe-grid');
+
+                if (!grid) return;
+
+                const defaultCards = Array.from(grid.querySelectorAll('.recipe-card'));
+                defaultCards.forEach(card => card.remove());
+
+                const cards = recipes.map(recipe => {
+                    const card = document.createElement('div');
+                    card.className = 'recipe-card';
+                    const imageSrc = recipe.image || '/images/recipe-placeholder.svg';
+                    card.innerHTML = `
+                        <div class="card-media">
+                            <img src="${imageSrc}" alt="${recipe.title}">
+                            <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <h3>${recipe.title}</h3>
+                            <p>${recipe.description || 'A delicious recipe shared by the community.'}</p>
+                            <div class="rating-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                            </div>
+                            <span class="tag-pill">${recipe.category || 'Community'}</span>
+                        </div>
+                    `;
+                    return card;
+                });
+
+                cards.forEach(card => grid.appendChild(card));
+            } catch (error) {
+                console.error('Failed to load recipes', error);
+            }
+        }
+
+        function showShareView() {
+            document.getElementById('explore-view').style.display = 'none';
+            document.getElementById('share-view').style.display = 'block';
+            document.getElementById('browse-btn').classList.remove('active');
+            document.getElementById('share-btn').classList.add('active');
+        }
+
+        function showExploreView() {
+            document.getElementById('explore-view').style.display = 'block';
+            document.getElementById('share-view').style.display = 'none';
+            document.getElementById('browse-btn').classList.add('active');
+            document.getElementById('share-btn').classList.remove('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadRecipes();
+
+            const form = document.getElementById('recipe-form');
+            if (form) {
+                form.addEventListener('submit', async (event) => {
+                    event.preventDefault();
+
+                    const payload = {
+                        title: document.getElementById('recipe-title').value.trim(),
+                        description: document.getElementById('recipe-desc').value.trim(),
+                        category: document.getElementById('recipe-category').value,
+                        cookTime: document.getElementById('cook-time').value.trim(),
+                        ingredients: document.getElementById('ingredients').value.trim(),
+                        steps: document.getElementById('steps').value.trim()
+                    };
+
+                    try {
+                        const response = await fetch('/api/recipes', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (response.ok) {
+                            form.reset();
+                            await loadRecipes();
+                            showExploreView();
+                            alert('Recipe Published Successfully!');
+                        } else {
+                            throw new Error('Unable to save recipe');
+                        }
+                    } catch (error) {
+                        console.error(error);
+                        alert('There was a problem saving your recipe.');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
