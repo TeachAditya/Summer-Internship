@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "id": "1785949113890",
+    "name": "Adi",
+    "email": "adi123@gmail.com",
+    "password": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f"
+  },
+  {
+    "id": "1785963323776",
+    "name": "Aditya",
+    "email": "aditya123@gmail.com",
+    "password": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f"
+  }
+]

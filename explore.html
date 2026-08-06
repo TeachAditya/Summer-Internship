@@ -29,30 +29,37 @@
 
     <div class="explore-wrapper">
         
-        <aside class="filter-sidebar">
-            <a href="#" class="filter-link active">All</a>
-            <a href="#" class="filter-link">Breakfast</a>
-            <a href="#" class="filter-link">Lunch</a>
-            <a href="#" class="filter-link">Categories</a>
-            <a href="#" class="filter-link">Dessert</a>
-            <a href="#" class="filter-link">Blog</a>
+        <aside class="filter-sidebar" id="filter-sidebar">
+            <a href="#" class="filter-link active" data-category="all">All</a>
+            <a href="#" class="filter-link" data-category="breakfast">Breakfast</a>
+            <a href="#" class="filter-link" data-category="lunch">Lunch</a>
+            <a href="#" class="filter-link" data-category="dinner">Dinner</a>
+            <a href="#" class="filter-link" data-category="dessert">Dessert</a>
+            <a href="#" class="filter-link" data-category="other">Other</a>
         </aside>
 
         <main>
             <div class="explore-header-controls">
                 <div class="inner-search">
                     <i class="fa-solid fa-search"></i>
-                    <input type="text" placeholder="Search">
+                    <input type="text" id="recipe-search" placeholder="Search recipes">
                 </div>
                 <div class="dropdowns-group">
-                    <select class="filter-dropdown">
-                        <option>All Filters</option>
+                    <select class="filter-dropdown" id="category-select">
+                        <option value="all">All Categories</option>
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                        <option value="dessert">Dessert</option>
+                        <option value="other">Other</option>
                     </select>
-                    <select class="filter-dropdown">
-                        <option>Fitleres...</option>
+                    <select class="filter-dropdown" id="sort-select">
+                        <option value="default">Sort by</option>
+                        <option value="az">A-Z</option>
+                        <option value="newest">Newest</option>
                     </select>
                 </div>
-                <button class="more-filters-btn">
+                <button class="more-filters-btn" id="filter-toggle-btn" type="button">
                     <i class="fa-solid fa-sliders"></i> Filters
                 </button>
             </div>
@@ -77,120 +84,8 @@
                     <button type="button" class="add-recipe-btn" onclick="showShareView()">Share Your Recipe</button>
                 </div>
 
-                <div class="explore-grid" id="recipe-grid">
-                    <div class="recipe-card">
-                        <div class="card-media">
-                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
-                            <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
-                        </div>
-                        <div class="card-body">
-                            <h3>Spicy Chicken Pizza</h3>
-                            <div class="rating-stars">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
-                            <span class="tag-pill">Healthy</span>
-                        </div>
-                    </div>
-
-                    <div class="recipe-card">
-                        <div class="card-media">
-                            <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
-                            <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
-                        </div>
-                        <div class="card-body">
-                            <h3>Vegan Tacos</h3>
-                            <div class="rating-stars">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
-                            </div>
-                            <span class="tag-pill">Healthy</span>
-                        </div>
-                    </div>
-
-                    <div class="recipe-card">
-                        <div class="card-media">
-                            <img src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
-                            <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
-                        </div>
-                        <div class="card-body">
-                            <h3>Signature Cocktail</h3>
-                            <div class="rating-stars">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
-                            <span class="tag-pill">Healthy</span>
-                        </div>
-                    </div>
-
-                    <div class="recipe-card">
-                        <div class="card-media">
-                            <img src="https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
-                            <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
-                        </div>
-                        <div class="card-body">
-                            <h3>Lemon Tart</h3>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
-                        </div>
-                        <span class="tag-pill">Healthy</span>
-                    </div>
-                </div>
-
-                <div class="recipe-card">
-                    <div class="card-media">
-                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
-                        <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="card-body">
-                        <h3>Healthy Tofu & Veggie Bowl</h3>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
-                        </div>
-                        <span class="tag-pill">Healthy</span>
-                    </div>
-                </div>
-
-                <div class="recipe-card">
-                    <div class="card-media">
-                        <img src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
-                        <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="card-body">
-                        <h3>Garlic Steak</h3>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <span class="tag-pill">Healthy</span>
-                    </div>
-                </div>
-
-                <div class="recipe-card">
-                    <div class="card-media">
-                        <img src="https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
-                        <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="card-body">
-                        <h3>Blueberry Pancakes</h3>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
-                        </div>
-                        <span class="tag-pill">Healthy</span>
-                    </div>
-                </div>
-
-                <div class="recipe-card">
-                    <div class="card-media">
-                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80" alt="Recipe Meal">
-                        <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="card-body">
-                        <h3>Chocolate Cake</h3>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
-                        </div>
-                        <span class="tag-pill">Healthy</span>
-                    </div>
-                </div>
-
-                </div>
+                <div id="recipe-status" class="recipe-status">Loading recipes…</div>
+                <div class="explore-grid" id="recipe-grid"></div>
             </section>
 
             <section id="share-view" style="display: none;">
@@ -264,98 +159,14 @@
         </main>
     </div>
 
-    <script>
-        async function loadRecipes() {
-            try {
-                const response = await fetch('/api/recipes');
-                const recipes = await response.json();
-                const grid = document.getElementById('recipe-grid');
+    <div class="recipe-modal-overlay" id="recipe-modal-overlay" hidden>
+        <div class="recipe-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button type="button" class="modal-close" id="modal-close" aria-label="Close recipe details">×</button>
+            <div id="recipe-modal-content"></div>
+        </div>
+    </div>
 
-                if (!grid) return;
-
-                const defaultCards = Array.from(grid.querySelectorAll('.recipe-card'));
-                defaultCards.forEach(card => card.remove());
-
-                const cards = recipes.map(recipe => {
-                    const card = document.createElement('div');
-                    card.className = 'recipe-card';
-                    const imageSrc = recipe.image || '/images/recipe-placeholder.svg';
-                    card.innerHTML = `
-                        <div class="card-media">
-                            <img src="${imageSrc}" alt="${recipe.title}">
-                            <button class="fav-icon"><i class="fa-regular fa-heart"></i></button>
-                        </div>
-                        <div class="card-body">
-                            <h3>${recipe.title}</h3>
-                            <p>${recipe.description || 'A delicious recipe shared by the community.'}</p>
-                            <div class="rating-stars">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
-                            </div>
-                            <span class="tag-pill">${recipe.category || 'Community'}</span>
-                        </div>
-                    `;
-                    return card;
-                });
-
-                cards.forEach(card => grid.appendChild(card));
-            } catch (error) {
-                console.error('Failed to load recipes', error);
-            }
-        }
-
-        function showShareView() {
-            document.getElementById('explore-view').style.display = 'none';
-            document.getElementById('share-view').style.display = 'block';
-            document.getElementById('browse-btn').classList.remove('active');
-            document.getElementById('share-btn').classList.add('active');
-        }
-
-        function showExploreView() {
-            document.getElementById('explore-view').style.display = 'block';
-            document.getElementById('share-view').style.display = 'none';
-            document.getElementById('browse-btn').classList.add('active');
-            document.getElementById('share-btn').classList.remove('active');
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            loadRecipes();
-
-            const form = document.getElementById('recipe-form');
-            if (form) {
-                form.addEventListener('submit', async (event) => {
-                    event.preventDefault();
-
-                    const payload = {
-                        title: document.getElementById('recipe-title').value.trim(),
-                        description: document.getElementById('recipe-desc').value.trim(),
-                        category: document.getElementById('recipe-category').value,
-                        cookTime: document.getElementById('cook-time').value.trim(),
-                        ingredients: document.getElementById('ingredients').value.trim(),
-                        steps: document.getElementById('steps').value.trim()
-                    };
-
-                    try {
-                        const response = await fetch('/api/recipes', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
-
-                        if (response.ok) {
-                            form.reset();
-                            await loadRecipes();
-                            showExploreView();
-                            alert('Recipe Published Successfully!');
-                        } else {
-                            throw new Error('Unable to save recipe');
-                        }
-                    } catch (error) {
-                        console.error(error);
-                        alert('There was a problem saving your recipe.');
-                    }
-                });
-            }
-        });
-    </script>
+    <script src="scripts/explore.js"></script>
+    <script src="scripts/auth-nav.js"></script>
 </body>
 </html>
