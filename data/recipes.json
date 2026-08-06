@@ -1,22 +1,162 @@
 [
   {
-    "id": "1785391010812",
-    "title": "Burger",
-    "description": "A quick meal up",
+    "id": "breakfast-1",
+    "title": "Golden Avocado Toast",
+    "description": "Crisp sourdough topped with mashed avocado, chili flakes, and a poached egg.",
     "category": "breakfast",
-    "cookTime": "20 minutes",
-    "ingredients": "bread, onion, tomatoes",
-    "steps": "",
-    "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=400&q=80"
+    "cookTime": "15 minutes",
+    "ingredients": "2 slices sourdough, 1 ripe avocado, 2 eggs, chili flakes, lemon juice, salt, pepper, parsley",
+    "steps": "Toast the sourdough until crisp. Mash the avocado with lemon juice, salt, and pepper. Poach or fry the eggs, then layer everything on the toast and finish with parsley and chili flakes.",
+    "image": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=800&q=80"
   },
   {
-    "id": "1785390837451",
-    "title": "Test Recipe",
-    "description": "Verified submission",
-    "category": "Dinner",
-    "cookTime": "",
-    "ingredients": "",
-    "steps": "",
-    "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=400&q=80"
+    "id": "breakfast-2",
+    "title": "Berry Yogurt Parfait",
+    "description": "Layered Greek yogurt, granola, and fresh berries for a quick bright breakfast.",
+    "category": "breakfast",
+    "cookTime": "10 minutes",
+    "ingredients": "Greek yogurt, mixed berries, granola, honey, chia seeds",
+    "steps": "Spoon yogurt into glasses, add berries and granola in layers, then drizzle honey and sprinkle chia seeds on top.",
+    "image": "https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "breakfast-4",
+    "title": "Maple Banana Pancakes",
+    "description": "Soft pancakes topped with banana slices and warm maple syrup.",
+    "category": "breakfast",
+    "cookTime": "25 minutes",
+    "ingredients": "flour, milk, eggs, banana, baking powder, maple syrup, butter",
+    "steps": "Mix the batter, cook small pancakes on a skillet, and serve with banana slices and maple syrup.",
+    "image": "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "lunch-2",
+    "title": "Roasted Vegetable Pasta",
+    "description": "Pasta tossed with roasted vegetables and a light garlic herb sauce.",
+    "category": "lunch",
+    "cookTime": "30 minutes",
+    "ingredients": "pasta, zucchini, bell peppers, cherry tomatoes, garlic, olive oil, parmesan, basil",
+    "steps": "Roast the vegetables until caramelized. Boil the pasta, toss with garlic oil, and combine everything with parmesan and basil.",
+    "image": "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "lunch-3",
+    "title": "Crispy Chickpea Salad Bowl",
+    "description": "Crunchy chickpeas, greens, cucumber, and a lemony dressing.",
+    "category": "lunch",
+    "cookTime": "15 minutes",
+    "ingredients": "chickpeas, mixed greens, cucumber, tomato, red onion, lemon, olive oil, cumin",
+    "steps": "Roast the chickpeas with spices until crisp. Toss with greens and vegetables, then finish with lemon dressing.",
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "lunch-4",
+    "title": "Tomato Basil Soup",
+    "description": "Silky tomato soup served with toasted bread and fresh herbs.",
+    "category": "lunch",
+    "cookTime": "25 minutes",
+    "ingredients": "tomatoes, onion, garlic, vegetable broth, cream, basil, bread",
+    "steps": "Sauté onion and garlic, add tomatoes and broth, then simmer until tender. Blend until smooth, stir in cream, and serve with basil and toast.",
+    "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "lunch-5",
+    "title": "Herb Turkey Burger",
+    "description": "Juicy turkey patties served with lettuce, tomato, and pickles.",
+    "category": "lunch",
+    "cookTime": "25 minutes",
+    "ingredients": "ground turkey, bread buns, lettuce, tomato, pickles, onion, garlic powder, paprika",
+    "steps": "Mix the turkey with seasoning, form patties, and cook until browned. Serve on buns with vegetables and sauces.",
+    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "dinner-1",
+    "title": "Creamy Garlic Pasta",
+    "description": "Silky pasta with garlic, parmesan, and roasted cherry tomatoes.",
+    "category": "dinner",
+    "cookTime": "25 minutes",
+    "ingredients": "pasta, garlic, butter, cream, parmesan, cherry tomatoes, parsley",
+    "steps": "Cook the pasta and reserve a bit of water. Sauté garlic, stir in cream and parmesan, then toss with pasta and tomatoes until glossy.",
+    "image": "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "dinner-2",
+    "title": "Honey Glazed Salmon",
+    "description": "Baked salmon glazed with honey, soy, and ginger.",
+    "category": "dinner",
+    "cookTime": "30 minutes",
+    "ingredients": "salmon fillets, honey, soy sauce, ginger, garlic, sesame seeds, broccoli",
+    "steps": "Mix the glaze and brush over the salmon. Bake until flaky and serve with roasted broccoli and sesame seeds.",
+    "image": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "dinner-3",
+    "title": "Spiced Vegetable Curry",
+    "description": "A hearty curry with chickpeas, spinach, and coconut milk.",
+    "category": "dinner",
+    "cookTime": "35 minutes",
+    "ingredients": "chickpeas, onion, garlic, curry paste, coconut milk, spinach, rice",
+    "steps": "Sauté onion and garlic, add curry paste, then stir in chickpeas and coconut milk. Simmer until thick and add spinach before serving with rice.",
+    "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "dinner-4",
+    "title": "Stuffed Bell Peppers",
+    "description": "Bell peppers filled with rice, beef, herbs, and tomato sauce.",
+    "category": "dinner",
+    "cookTime": "40 minutes",
+    "ingredients": "bell peppers, ground beef, rice, tomato sauce, onion, garlic, oregano",
+    "steps": "Cook the filling, stuff the halved peppers, and bake until tender. Serve hot with herbs on top.",
+    "image": "https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "dinner-5",
+    "title": "Lemon Rosemary Chicken",
+    "description": "Roasted chicken thighs with lemon, rosemary, and roasted potatoes.",
+    "category": "dinner",
+    "cookTime": "45 minutes",
+    "ingredients": "chicken thighs, lemon, rosemary, garlic, potatoes, olive oil, salt, pepper",
+    "steps": "Marinate the chicken with lemon, garlic, and rosemary. Roast with potatoes until golden and serve with pan juices.",
+    "image": "https://images.unsplash.com/photo-1518492104633-130d0cc84637?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "dessert-1",
+    "title": "Chocolate Lava Cake",
+    "description": "Warm chocolate cake with a molten center and vanilla ice cream.",
+    "category": "dessert",
+    "cookTime": "25 minutes",
+    "ingredients": "dark chocolate, butter, sugar, eggs, flour, vanilla ice cream",
+    "steps": "Melt chocolate and butter, whisk with eggs and sugar, fold in flour, and bake until the edges are set and the center is gooey.",
+    "image": "https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "dessert-2",
+    "title": "Lemon Berry Tart",
+    "description": "Buttery tart shell filled with lemon custard and fresh berries.",
+    "category": "dessert",
+    "cookTime": "35 minutes",
+    "ingredients": "tart shell, lemons, sugar, butter, eggs, blueberries, strawberries",
+    "steps": "Bake the tart shell, prepare the lemon filling, and fill the shell before topping with berries.",
+    "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "other-1",
+    "title": "Crispy Flatbread Bites",
+    "description": "Warm flatbread topped with herbs, garlic, and cheese for sharing.",
+    "category": "other",
+    "cookTime": "15 minutes",
+    "ingredients": "flatbread, garlic, olive oil, mozzarella, oregano, parsley",
+    "steps": "Brush flatbread with oil and garlic, add cheese and herbs, then bake until crisp and bubbly.",
+    "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "other-2",
+    "title": "Garden Herb Focaccia",
+    "description": "Soft focaccia with rosemary, olives, and sea salt.",
+    "category": "other",
+    "cookTime": "40 minutes",
+    "ingredients": "bread flour, yeast, olive oil, rosemary, olives, sea salt",
+    "steps": "Mix and knead the dough, proof it, then top with herbs and olives before baking until golden.",
+    "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80"
   }
 ]

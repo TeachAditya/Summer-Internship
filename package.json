@@ -4,12 +4,13 @@
   "description": "",
   "main": "scripts/server.js",
   "scripts": {
-    "start": "node scripts/server.js"
+    "start": "node scripts/server.js",
+    "dev": "nodemon scripts/server.js"
   },
   "dependencies": {
-    "bcrypt": "^6.0.0",
-    "express": "^4.22.2",
-    "mongoose": "^9.9.0",
+    "express": "^4.22.2"
+  },
+  "devDependencies": {
     "nodemon": "^3.1.14"
   }
 }
