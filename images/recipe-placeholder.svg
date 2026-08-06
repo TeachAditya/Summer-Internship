@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
-  <rect width="800" height="500" fill="#f7efe7"/>
-  <rect x="60" y="70" width="680" height="360" rx="24" fill="#fff4e8" stroke="#e7c38d" stroke-width="4"/>
-  <circle cx="260" cy="240" r="120" fill="#f5b26b"/>
-  <rect x="380" y="180" width="220" height="120" rx="16" fill="#8bbf6a"/>
-  <rect x="210" y="340" width="260" height="28" rx="14" fill="#d9a463"/>
-  <text x="400" y="430" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" fill="#7a4f24">Recipe Preview</text>
-</svg>
